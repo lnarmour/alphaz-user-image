@@ -28,7 +28,7 @@ RUN cd /home/developer/bin && \
     wget http://www.cs.colostate.edu/AlphaZ/bundles/linux64.tar.gz && \
     tar xzf linux64.tar.gz && \
     rm -rf linux64.tar.gz && \ 
-    sed -i 's|^RECENT_WORKSPACES=.*|RECENT_WORKSPACES=|' /home/developer/bin/eclipse/configuration/.settings/org.eclipse.ui.ide.prefs
+    sed -i 's|^RECENT_WORKSPACES=.*|RECENT_WORKSPACES=/home/developer/eclipse-workspace|' /home/developer/bin/eclipse/configuration/.settings/org.eclipse.ui.ide.prefs
 
 ENV HOME /home/developer
 WORKDIR /home/developer
