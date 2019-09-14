@@ -1,17 +1,15 @@
 env:
-  - HEAD="$(git rev-parse HEAD)"
+  - TAG="$(git rev-parse HEAD)"
 
 services:
   - docker
 
 install:
-#  - docker build -t alphaz .
-  - docker pull alpine:latest
+  - docker build -t alphaz .
 
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker tag alpine narmour/alphaz-user-image:$HEAD
-#  - docker tag alphaz narmour/alphaz-user-image:$HEAD
-#  - docker tag alphaz narmour/alphaz-user-image:latest
-#  - docker push narmour/alphaz-user-image:$HEAD
-#  - docker push narmour/alphaz-user-image:latest
+  - docker tag alphaz narmour/alphaz-user-image:$TAG
+  - docker tag alphaz narmour/alphaz-user-image:latest
+  - docker push narmour/alphaz-user-image:$TAG
+  - docker push narmour/alphaz-user-image:latest
