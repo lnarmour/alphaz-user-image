@@ -1,5 +1,14 @@
+env:
+  - HEAD="$(git rev-parse HEAD)"
+
 services:
   - docker
 
-before_install:
+install:
   - docker build -t alphaz .
+
+script:
+  - docker tag alphaz narmour/alphaz-user-image:$HEAD
+  - docker tag alphaz narmour/alphaz-user-image:latest
+  - docker push narmour/alphaz-user-image:$HEAD
+  - docker push narmour/alphaz-user-image:latest
