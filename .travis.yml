@@ -1,14 +1,19 @@
 env:
   - HEAD="$(git rev-parse HEAD)"
+  - secure: "fzFAEwHIuC79zLjnhbEjKMZRaGUmqyuC2nnvb2X/1GYuYIwe3gh+MZxQltJ6nnXQNF9pN/wt0vZNINATyE1cUcbMTkEnjzU4gzCjqA1aJ4tNIwaT8viopwuclv8TfIiMl1pYZzNpzxxsPCzBySOoYa6bYZv5MAufI8r/rYHO297W66FzdAAYkghhkVWtrSd/aksuAfGtWWeDGN/ep8TNajBRz47brMgYDyqzrWdKb1iRyQZDETi/FPOORtYmIthCgSQYH5dCFG4jXDTyHEGbhKQ/ASp1hi88fTYbUUcv11J5NlZF0XLzN1iRWfO/QOp3po7aw1IMRaVG5o5ji4wwk79HFBovjRoRKv3oCy7h/19+4hTuVHzCm0fVBHbNWctW8aj11g/mVanUKSMaRJwtUIRaOjF2O++6UsGteJYj5Yh3WWYDl6yJnOH3OyO7oVzzzkC4Pp+DAstQaXLDJfnDkC3hESOxye0dOFhSir/FoUVAUCdm4aH7+kcZ6I/J6+VCmF93TJiQOG4ewtTXRLJiX+VQfMzsdyuRpFdlMRLKuZ5sjP5WAfBCQXSsf5ySFv6xLp9sfVhBwCEpbgDErgLNba3wOqDQq9kUkaldjh+HQaCbzgzv2wrirnEJT3rSOSY6Zw5IijP+eKFwlE3CY4m6KNutwB2pCQgUo8OfcJYgMvA="
+  - secure: "a+5hGo7yORhcQfdWmmS6DIOGJxDFi04V8g2nL338QRD6VPg9uiNNXXqoiAtZxDHEi92m0w4VeFqNkhGMD9r/a1/Mp7JzUFYI0B+m7ZXFizCxWmelpqYyMWQ9ZsGDC7nNl4agxHyfpg92s9gP4SFfE3AaDXrh/zXH0JJeY754cAREaQydy59vDC00d0c85bl3pJrr3XRS/LRIgo4KrZw40f32XDmHOognyNmE0C8l2VGWKDz5t7jAfjjCtOBmJkMs9xWhOg49G5eM4DwCIEUXkQHierE+0YauUNuETSA5fT9JceFS0/OMICG4722EiBJmIrDUAyL1/DPRUJc20ArAehSemG39D64XvFqsUBxizjRedDJkGLeskWKzsM/g0PXBpo3fgBn7XGggX8dzZjRwUa6052Os4Lw1znRWQwWzjqu3BryzL23UrCyXHNRkdds3TDY8gYYIj8f7V2pkf01fkOsEmu2YooyfJsXWcNry9kYLaa9IUYxGTQdphF6NYrXPF7UVBKeaUTGiLPpD+4ncnmxvbpFi0PggbbLkhbME9m4fedJBnzFSHi+HR1Vtx4Xbces+vhrS7zQ0wAj05tz6qn1SgMZuy7E/3fjq4s4uBP0ftl9uO6BwJ5w8dj8ll9qU0WPjvyQ4VYHHuePXAj4QbsCUHtBlZ8hYWCftJSvEKdA="
 
 services:
   - docker
 
 install:
-  - docker build -t alphaz .
+#  - docker build -t alphaz .
+  - docker pull alpine:latest
 
 script:
-  - docker tag alphaz narmour/alphaz-user-image:$HEAD
-  - docker tag alphaz narmour/alphaz-user-image:latest
-  - docker push narmour/alphaz-user-image:$HEAD
-  - docker push narmour/alphaz-user-image:latest
+  - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+  - docker tag alpine narmour/alphaz-user-image:$HEAD
+#  - docker tag alphaz narmour/alphaz-user-image:$HEAD
+#  - docker tag alphaz narmour/alphaz-user-image:latest
+#  - docker push narmour/alphaz-user-image:$HEAD
+#  - docker push narmour/alphaz-user-image:latest
