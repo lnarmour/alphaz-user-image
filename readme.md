@@ -8,7 +8,7 @@ https://cloud.docker.com/repository/docker/narmour/alphaz-user-image
 Latest Travis CI build status:  
 [![Build Status](https://travis-ci.org/lnarmour/alphaz-user-image.svg?branch=master)](https://travis-ci.org/lnarmour/alphaz-user-image)
 
-This automates much of the manual set up required to used AlphaZ as described here:  
+This automates much of the manual set up required to use AlphaZ as described here:  
 https://www.cs.colostate.edu/AlphaZ/wiki/doku.php?id=eclipse_setup
 
 > **NOTE**: You need root/administrator privileges to do the following.  These steps have only been tested on Mac and Linux but the concepts still hold true for Windows.
