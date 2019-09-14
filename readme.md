@@ -1,6 +1,7 @@
 ## Run AlphaZ from a docker container
 
-This process details how to run an Eclipse instance from within a docker container.  The image `narmour/alphaz-user-image` is built daily:
+This process details how to run an Eclipse instance from within a docker container.  The image `narmour/alphaz-user-image` is built daily with Travis CI:
+
 [![Build Status](https://travis-ci.org/lnarmour/alphaz-user-image.svg?branch=master)](https://travis-ci.org/lnarmour/alphaz-user-image)
 
 > **NOTE**: You need root/administrator privileges to do the following.  These steps have only been tested on Mac and Linux but the concepts still hold true for Windows.
