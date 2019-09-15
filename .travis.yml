@@ -1,6 +1,10 @@
 env:
   - TAG="$(git rev-parse HEAD)"
 
+branches:
+  only:
+    - master
+
 services:
   - docker
 
