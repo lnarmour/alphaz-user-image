@@ -17,10 +17,12 @@ if [[ -z "$ip" && -z "$x11" ]]; then
 	exit;
 fi;
 
+mkdir -p $HOME/alphaz-docker/workspace $HOME/alphaz-docker/git
+
 docker run -ti --rm \
            -e DISPLAY=$ip:0 \
            -v "$x11" \
-           -v /var/alphaz/workspace:/home/developer/eclipse-workspace \
-           -v /var/alphaz/git:/home/developer/git \
+           -v $HOME/alphaz-docker/workspace:/home/developer/eclipse-workspace \
+           -v $HOME/alphaz-docker/git:/home/developer/git \
            --name alphaz \
            narmour/alphaz-user-image:latest
