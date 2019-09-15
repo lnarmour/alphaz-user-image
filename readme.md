@@ -8,7 +8,7 @@ https://cloud.docker.com/repository/docker/narmour/alphaz-user-image
 Latest Travis CI build status:  
 [![Build Status](https://travis-ci.org/lnarmour/alphaz-user-image.svg?branch=master)](https://travis-ci.org/lnarmour/alphaz-user-image)
 
-This automates much of the manual set up required to used AlphaZ as described here:  
+This automates much of the manual set up required to use AlphaZ as described here:  
 https://www.cs.colostate.edu/AlphaZ/wiki/doku.php?id=eclipse_setup
 
 This has been tested on Mac, Linux, and Windows 10 Home. You need root/administrator privileges to do the following.
@@ -20,7 +20,7 @@ This has been tested on Mac, Linux, and Windows 10 Home. You need root/administr
         1. https://docs.docker.com/docker-for-mac/install/
     1. Linux: use Docker Server Community Edition (CE)
         1. https://docs.docker.com/v17.12/install/#server
-    1. Windows: user Docker Toolbox
+    1. Windows: use Docker Toolbox
         > **NOTE**: "Docker Toolbox" is the legacy Docker implementation for Windows. If you meet the minimum system requirements for Docker Desktop, then you can use that.  However, the provided `run.bat` script assumes that you have installed Docker Toolbox, and may not work as-is with Docker Desktop.  
         1. https://docs.docker.com/toolbox/toolbox_install_windows/
 3. Grab the latest `alphaz-user-image` image from docker hub with the command:
@@ -53,18 +53,17 @@ When the `alphaz-user-image` image is started with the provided `run.sh` script,
 
 ### Run the alphaz-user-image
 
-##### Verify that your host can do X11 forwarding
+#### Verify that your host can do X11 forwarding
 
 * Mac: 
   * If you're using a Mac for example, make sure the application **XQuartz** is installed.  If not, then install it from here: https://www.xquartz.org/
   * Edit XQuartz > Preferences > Security > enable the "Allow Connections From Network Clients" setting 
-
 * Windows:
   * Install "MobaXterm Home Edition": https://mobaxterm.mobatek.net/download-home-edition.html
   * By default, launching MobaXterm starts its X11 server. 
 
 
-##### Run the container
+#### Run the container
 
 * Mac:
     1. Launch XQuartz
