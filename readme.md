@@ -11,7 +11,7 @@ Latest Travis CI build status:
 This automates much of the manual set up required to used AlphaZ as described here:  
 https://www.cs.colostate.edu/AlphaZ/wiki/doku.php?id=eclipse_setup
 
-> **NOTE**: You need root/administrator privileges to do the following.  These steps have only been tested on Mac and Linux but the concepts still hold true for Windows.
+This has been tested on Mac, Linux, and Windows 10 Home. You need root/administrator privileges to do the following.
 
 ### Setup
 
