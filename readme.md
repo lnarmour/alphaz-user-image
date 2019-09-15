@@ -16,14 +16,13 @@ https://www.cs.colostate.edu/AlphaZ/wiki/doku.php?id=eclipse_setup
 ### Setup
 
 1. Install Docker.
-    1. Mac or Windows: use Docker Desktop
+    1. Mac: use Docker Desktop
         1. https://docs.docker.com/docker-for-mac/install/
-        1. https://docs.docker.com/docker-for-windows/install/
     1. Linux: use Docker Server Community Edition (CE)
         1. https://docs.docker.com/v17.12/install/#server
-2. Start the Docker daemon, see the getting start guides if needed:
-    1. https://docs.docker.com/docker-for-mac/
-    1. https://docs.docker.com/docker-for-windows/
+    1. Windows: user Docker Toolbox
+        > **NOTE**: "Docker Toolbox" is the legacy Docker implementation for Windows. If you meet the minimum system requirements for Docker Desktop, then you can use that.  However, the provided `run.bat` script assumes that you have installed Docker Toolbox, and may not work as-is with Docker Desktop.  
+        1. https://docs.docker.com/toolbox/toolbox_install_windows/
 3. Grab the latest `alphaz-user-image` image from docker hub with the command:
    ``` 
    $ docker pull narmour/alphaz-user-image:latest
@@ -61,11 +60,20 @@ When the `alphaz-user-image` image is started with the provided `run.sh` script,
   * Edit XQuartz > Preferences > Security > enable the "Allow Connections From Network Clients" setting 
 
 * Windows:
-  > **NOTE**: This part is untested at the moment, you'll need to do some troubleshooting to get it to work in the current state of things. But free Windows applications like MobaXterm should support X11 forwarding. 
+  * Install "MobaXterm Home Edition": https://mobaxterm.mobatek.net/download-home-edition.html
+  * By default, launching MobaXterm starts its X11 server. 
+
 
 ##### Run the container
 
-If you're using Mac or Linux, then just invoke the provided `run.sh` script.  If everything is working then you should see Eclipse start up successfully.
+* Mac:
+    1. Launch XQuartz
+    1. Invoke the provided `run.sh` script.
+* Windows:
+    1. Launch MobaXterm
+    1. Invoke the provided `run.bat` script.
+    
+If everything is working then you should see Eclipse start up successfully.
 
 Now you can pick up with the rest of the AlphaZ documentation from here:  
 https://www.cs.colostate.edu/AlphaZ/wiki/doku.php 
