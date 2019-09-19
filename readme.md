@@ -25,7 +25,7 @@ This has been tested on Mac, Linux, and Windows 10 Home. You need root/administr
         1. https://docs.docker.com/toolbox/toolbox_install_windows/
 3. Grab the latest `alphaz-user-image` image from docker hub with the command:
    ``` 
-   $ docker pull narmour/alphaz-user-image:latest
+   $ docker pull narmour/alphaz-user-image
    ```
    
    It may take a few minutes to download the image since it's ~1GB in size.  Once this is complete, you should be able to see it locally on your machine with the following command:
