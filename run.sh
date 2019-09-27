@@ -24,5 +24,5 @@ docker run -ti --rm \
            -v "$x11" \
            -v $HOME/alphaz-docker/workspace:/home/developer/eclipse-workspace \
            -v $HOME/alphaz-docker/git:/home/developer/git \
-           --name alphaz \
+           --name alphaz-user \
            narmour/alphaz-user-image:latest
