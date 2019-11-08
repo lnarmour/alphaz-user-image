@@ -4,7 +4,7 @@ RUN sed 's/main$/main universe/' -i /etc/apt/sources.list && \
     apt-get update && apt-get install -y software-properties-common && \
     add-apt-repository ppa:openjdk-r/ppa -y -y && \
     apt-get update && \
-    apt-get install -y openjdk-8-jdk libxext-dev libxrender-dev libxtst-dev && \
+    apt-get install -y openjdk-8-jdk libxext-dev libxrender-dev libxtst-dev rsync && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
