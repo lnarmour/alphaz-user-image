@@ -31,6 +31,9 @@ RUN cd /home/developer/bin && \
     sed -i 's|^RECENT_WORKSPACES=.*|RECENT_WORKSPACES=/home/developer/eclipse-workspace|' /home/developer/bin/eclipse/configuration/.settings/org.eclipse.ui.ide.prefs
 COPY resources/eclipse.ini /home/developer/bin/eclipse/eclipse.ini
 
+RUN eval sed -i "s~SVERSION~$(ls -l /home/developer/bin/eclipse/plugins | grep 'equinox.launcher_' | sed 's~.*_\(.*\).jar~\1~')~" /home/developer/bin/eclipse/eclipse.ini && \
+    eval sed -i "s~LVERSION~$(ls -l /home/developer/bin/eclipse/plugins | grep 'equinox.launcher.gtk' | sed 's~.*x86_64_\(.*\)~\1~')~" /home/developer/bin/eclipse/eclipse.ini
+
 ENV HOME /home/developer
 WORKDIR /home/developer
 CMD /home/developer/bin/eclipse/eclipse
