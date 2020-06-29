@@ -3,7 +3,7 @@ env:
 
 branches:
   only:
-    - master
+    - DEV
 
 services:
   - docker
@@ -14,6 +14,6 @@ install:
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker tag alphaz narmour/alphaz-user-image:$TAG
-  - docker tag alphaz narmour/alphaz-user-image:latest
+  - docker tag alphaz narmour/alphaz-user-image:DEV
   - docker push narmour/alphaz-user-image:$TAG
-  - docker push narmour/alphaz-user-image:latest
+  - docker push narmour/alphaz-user-image:DEV
