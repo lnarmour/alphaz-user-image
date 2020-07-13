@@ -28,7 +28,7 @@ RUN cd /home/developer/bin && \
     wget http://www.cs.colostate.edu/AlphaZ/bundles/linux64-DEV.tar.gz && \
     tar xzf linux64-DEV.tar.gz && \
     rm -rf linux64-DEV.tar.gz && \ 
-    sed -i 's|^RECENT_WORKSPACES=.*|RECENT_WORKSPACES=/home/developer/eclipse-workspace|' /home/developer/bin/eclipse/configuration/.settings/org.eclipse.ui.ide.prefs
+    if [ -f /home/developer/bin/eclipse/configuration/.settings/org.eclipse.ui.ide.prefs ]; then sed -i 's|^RECENT_WORKSPACES=.*|RECENT_WORKSPACES=/home/developer/eclipse-workspace|' /home/developer/bin/eclipse/configuration/.settings/org.eclipse.ui.ide.prefs; fi;
 COPY resources/eclipse.ini /home/developer/bin/eclipse/eclipse.ini
 
 RUN eval sed -i "s~SVERSION~$(ls -l /home/developer/bin/eclipse/plugins | grep 'equinox.launcher_' | sed 's~.*_\(.*\).jar~\1~')~" /home/developer/bin/eclipse/eclipse.ini && \
