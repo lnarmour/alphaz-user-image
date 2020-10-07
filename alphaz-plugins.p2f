@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?p2f version='1.0.0'?>
+<p2f version='1.0.0'>
+  <ius size='1'>
+    <iu id='alphaz.feature.feature.group' name='AlphaZ' version='0.1.0.202010072125'>
+      <repositories size='1'>
+        <repository location='http://www.cs.colostate.edu/AlphaZ/update-sites/2019_03-DEV'/>
+      </repositories>
+    </iu>
+  </ius>
+</p2f>

@@ -20,7 +20,7 @@ xhost + 127.0.0.1;
 docker run -ti --rm \
            -e DISPLAY=host.docker.internal:0 \
            -v "$x11" \
-           -v $HOME/alphaz-user-docker/workspace:/home/developer/eclipse-workspace \
-           -v $HOME/alphaz-user-docker/git:/home/developer/git \
+           -v $HOME/alphaz-user-docker/workspace:/root/eclipse-workspace \
+           -v $HOME/alphaz-user-docker/git:/root/git \
            --name alphaz-user \
-           narmour/alphaz-user-image:DEV
+           narmour/alphaz-user-image:latest
