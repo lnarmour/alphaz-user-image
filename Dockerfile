@@ -11,29 +11,27 @@ RUN sed 's/main$/main universe/' -i /etc/apt/sources.list && \
 
 # Install libgtk as a separate step so that we can share the layer above with
 # the netbeans image
-RUN apt-get update && apt-get install -y libgtk2.0-0 libcanberra-gtk-module wget sudo vim git
+RUN apt-get update && apt-get install -y libgtk-3-dev libcanberra-gtk-module wget sudo vim git maven dbus-x11
 
-RUN mkdir -p /home/developer /home/developer/bin && \
-    echo "developer:x:1000:1000:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
-    echo "developer:x:1000:" >> /etc/group && \
-    echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
-    chmod 0440 /etc/sudoers.d/developer && \
-    chown developer:developer -R /home/developer && \
-    chown root:root /usr/bin/sudo && chmod 4755 /usr/bin/sudo && \
-    echo 'PATH=$PATH:/home/developer/bin/eclipse' >> /home/developer/.bashrc
+RUN cd / && \
+    wget http://cs.colostate.edu/~lnarmour/rsrc/eclipse-2019.tar.gz && \
+    tar xzf eclipse-2019.tar.gz && \
+    rm -rf eclipse-2019.tar.gz 
 
-USER developer
+RUN mkdir /working
+ADD install-plugins.sh /working/install-plugins.sh
+ADD required-plugins.p2f /working/required-plugins.p2f
+ADD alphaz-plugins.p2f /working/alphaz-plugins.p2f
+RUN bash /working/install-plugins.sh "required" && \
+    bash /working/install-plugins.sh "alphaz"
 
-RUN cd /home/developer/bin && \
-    wget http://www.cs.colostate.edu/AlphaZ/bundles/linux64.tar.gz && \
-    tar xzf linux64.tar.gz && \
-    rm -rf linux64.tar.gz && \ 
-    if [ -f /home/developer/bin/eclipse/configuration/.settings/org.eclipse.ui.ide.prefs ]; then sed -i 's|^RECENT_WORKSPACES=.*|RECENT_WORKSPACES=/home/developer/eclipse-workspace|' /home/developer/bin/eclipse/configuration/.settings/org.eclipse.ui.ide.prefs; fi; mkdir -p /home/developer/eclipse-workspace/; ln -s /home/developer/eclipse-workspace/ /home/developer/workspace;
-COPY resources/eclipse.ini /home/developer/bin/eclipse/eclipse.ini
+# omit spurious and likely ignorable GTK library accessibility warnings
+ENV NO_AT_BRIDGE 1 
+ENV ALPHAZ_REPO_ROOT /root/git/alphaz
 
-RUN eval sed -i "s~SVERSION~$(ls -l /home/developer/bin/eclipse/plugins | grep 'equinox.launcher_' | sed 's~.*_\(.*\).jar~\1~')~" /home/developer/bin/eclipse/eclipse.ini && \
-    eval sed -i "s~LVERSION~$(ls -l /home/developer/bin/eclipse/plugins | grep 'equinox.launcher.gtk' | sed 's~.*x86_64_\(.*\)~\1~')~" /home/developer/bin/eclipse/eclipse.ini
+ADD start.sh /opt/start.sh
+RUN chmod 755 /opt/start.sh
 
-ENV HOME /home/developer
-WORKDIR /home/developer
-CMD /home/developer/bin/eclipse/eclipse
+ENV HOME /root
+WORKDIR /root
+CMD /opt/start.sh
